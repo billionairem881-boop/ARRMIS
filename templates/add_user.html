@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add User
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+
+            <h3>Create User Account</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Full Name</label>
+
+                        <input
+                            type="text"
+                            name="full_name"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Username</label>
+
+                        <input
+                            type="text"
+                            name="username"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Email</label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Phone Number</label>
+
+                        <input
+                            type="text"
+                            name="phone"
+                            class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Password</label>
+
+                        <input
+                            type="password"
+                            name="password"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Confirm Password</label>
+
+                        <input
+                            type="password"
+                            name="confirm_password"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Role</label>
+
+                        <select
+                            name="role"
+                            class="form-select">
+
+                            <option>Administrator</option>
+                            <option>Lecturer</option>
+                            <option>Student</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Status</label>
+
+                        <select
+                            name="active"
+                            class="form-select">
+
+                            <option value="1">Active</option>
+                            <option value="0">Disabled</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn btn-success">
+
+                    Create User
+
+                </button>
+
+                <a
+                    href="/users"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

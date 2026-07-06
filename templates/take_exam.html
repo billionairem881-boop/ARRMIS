@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block title %}Take Examination{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-danger text-white">
+
+            <h3>{{ exam.title }}</h3>
+
+            <small>
+                Duration: {{ exam.duration }} Minutes
+            </small>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="alert alert-warning">
+
+                <strong>Time Remaining:</strong>
+
+                <span id="timer">
+                    --:--
+                </span>
+
+            </div>
+
+            <form method="POST">
+
+                {% if questions %}
+
+                    {% for question in questions %}
+
+                    <div class="card mb-4">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                {{ loop.index }}.
+                                {{ question.question }}
+
+                            </h5>
+
+                            <hr>
+
+                            <div class="form-check mb-2">
+
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="question_{{ question.id }}"
+                                    value="A"
+                                    required>
+
+                                <label class="form-check-label">
+
+                                    {{ question.option_a }}
+
+                                </label>
+
+                            </div>
+
+                            <div class="form-check mb-2">
+
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="question_{{ question.id }}"
+                                    value="B">
+
+                                <label class="form-check-label">
+
+                                    {{ question.option_b }}
+
+                                </label>
+
+                            </div>
+
+                            <div class="form-check mb-2">
+
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="question_{{ question.id }}"
+                                    value="C">
+
+                                <label class="form-check-label">
+
+                                    {{ question.option_c }}
+
+                                </label>
+
+                            </div>
+
+                            <div class="form-check">
+
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="question_{{ question.id }}"
+                                    value="D">
+
+                                <label class="form-check-label">
+
+                                    {{ question.option_d }}
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="alert alert-info">
+
+                        No questions are available for this examination.
+
+                    </div>
+
+                {% endif %}
+
+                <div class="text-center mt-4">
+
+                    <button
+                        type="submit"
+                        class="btn btn-success btn-lg">
+
+                        Submit Examination
+
+                    </button>
+
+                    <a
+                        href="{{ url_for('dashboard') }}"
+                        class="btn btn-secondary btn-lg">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    let duration = parseInt("{{ exam.duration|default(0) }}");
+
+    let totalSeconds = duration * 60;
+
+    const timer = document.getElementById("timer");
+
+    const form = document.querySelector("form");
+
+    function updateTimer() {
+
+        const minutes = Math.floor(totalSeconds / 60);
+
+        const seconds = totalSeconds % 60;
+
+        timer.textContent =
+            String(minutes).padStart(2, "0") +
+            ":" +
+            String(seconds).padStart(2, "0");
+
+        if (totalSeconds <= 0) {
+
+            clearInterval(countdown);
+
+            alert("Time is up. Your examination will now be submitted.");
+
+            form.submit();
+
+        }
+
+        totalSeconds--;
+
+    }
+
+    updateTimer();
+
+    const countdown = setInterval(updateTimer, 1000);
+
+});
+
+</script>
+
+{% endblock %}

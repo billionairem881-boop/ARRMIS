@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Attendance{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>Attendance Management</h2>
+
+        <a href="{{ url_for('take_attendance') }}" class="btn btn-primary">
+
+            Take Attendance
+
+        </a>
+
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            Attendance Records
+
+        </div>
+
+        <div class="card-body">
+
+            {% if attendance %}
+
+            <table class="table table-striped table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>#</th>
+                        <th>Student</th>
+                        <th>Registration No.</th>
+                        <th>Course</th>
+                        <th>Date</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for record in attendance %}
+
+                <tr>
+
+                    <td>{{ loop.index }}</td>
+
+                    <td>{{ record.student.full_name }}</td>
+
+                    <td>{{ record.student.reg_no }}</td>
+
+                    <td>{{ record.course.code }}</td>
+
+                    <td>{{ record.date }}</td>
+
+                    <td>
+
+                        {% if record.status == "Present" %}
+
+                        <span class="badge bg-success">
+
+                            Present
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="badge bg-danger">
+
+                            Absent
+
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+            <div class="alert alert-info">
+
+                No attendance records available.
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

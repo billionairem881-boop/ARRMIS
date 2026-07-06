@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Hero Section -->
+
+    <div class="p-5 mb-4 bg-primary text-white rounded shadow">
+
+        <div class="container">
+
+            <h1 class="display-4 fw-bold">
+                Academic Records & Results Management Information System
+            </h1>
+
+            <p class="lead mt-3">
+                A modern platform for managing student registration,
+                course registration, results, academic records,
+                transcripts and institutional communication.
+            </p>
+
+            <a href="{{ url_for('login') }}"
+               class="btn btn-light btn-lg mt-3">
+
+                Login to Continue
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Statistics -->
+
+    <div class="row text-center mb-5">
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h5>Total Students</h5>
+
+                    <h2 class="text-primary">
+                        {{ announcements|length }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h5>Programmes</h5>
+
+                    <h2 class="text-success">
+
+                        Academic
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h5>Courses</h5>
+
+                    <h2 class="text-danger">
+
+                        Active
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h5>Results</h5>
+
+                    <h2 class="text-warning">
+
+                        Available
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Portal Cards -->
+
+    <div class="row">
+
+        <div class="col-lg-3 mb-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-person-fill display-4 text-primary"></i>
+
+                    <h4 class="mt-3">
+
+                        Student Portal
+
+                    </h4>
+
+                    <p>
+
+                        Register courses, check results,
+                        download transcripts and update profile.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-3 mb-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-person-workspace display-4 text-success"></i>
+
+                    <h4 class="mt-3">
+
+                        Lecturer Portal
+
+                    </h4>
+
+                    <p>
+
+                        Upload CA scores, examination scores
+                        and manage assigned courses.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-3 mb-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-people-fill display-4 text-warning"></i>
+
+                    <h4 class="mt-3">
+
+                        Parent Portal
+
+                    </h4>
+
+                    <p>
+
+                        Monitor student performance
+                        and receive academic notifications.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-3 mb-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-speedometer2 display-4 text-danger"></i>
+
+                    <h4 class="mt-3">
+
+                        Administrator
+
+                    </h4>
+
+                    <p>
+
+                        Manage departments, programmes,
+                        students, staff and academic records.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Latest Announcements -->
+
+    <div class="card shadow mt-5">
+
+        <div class="card-header bg-dark text-white">
+
+            Latest Announcements
+
+        </div>
+
+        <div class="card-body">
+
+            {% if announcements %}
+
+                {% for announcement in announcements %}
+
+                <div class="border-bottom mb-3 pb-3">
+
+                    <h5>
+
+                        {{ announcement.title }}
+
+                    </h5>
+
+                    <p>
+
+                        {{ announcement.message }}
+
+                    </p>
+
+                    <small class="text-muted">
+
+                        {{ announcement.created_at.strftime("%d %B %Y") }}
+
+                    </small>
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p class="text-muted">
+
+                    No announcements available.
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

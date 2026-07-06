@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Course
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+
+            <h3>Add New Course</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Course Code
+                        </label>
+
+                        <input
+                            type="text"
+                            name="code"
+                            class="form-control"
+                            placeholder="e.g. CSC101"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Course Title
+                        </label>
+
+                        <input
+                            type="text"
+                            name="title"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+                            Credit Hours
+                        </label>
+
+                        <input
+                            type="number"
+                            name="credit_hours"
+                            class="form-control"
+                            min="1"
+                            max="6"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+                            Semester
+                        </label>
+
+                        <select
+                            name="semester"
+                            class="form-select">
+
+                            <option value="Semester I">
+                                Semester I
+                            </option>
+
+                            <option value="Semester II">
+                                Semester II
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+                            Level
+                        </label>
+
+                        <select
+                            name="level"
+                            class="form-select">
+
+                            <option>100</option>
+                            <option>200</option>
+                            <option>300</option>
+                            <option>400</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Department
+                        </label>
+
+                        <input
+                            type="text"
+                            name="department"
+                            class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Lecturer
+                        </label>
+
+                        <input
+                            type="text"
+                            name="lecturer"
+                            class="form-control">
+
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+
+                        <label class="form-label">
+                            Course Description
+                        </label>
+
+                        <textarea
+                            name="description"
+                            rows="4"
+                            class="form-control"></textarea>
+
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-4">
+
+                    <button
+                        type="submit"
+                        class="btn btn-success">
+
+                        Save Course
+
+                    </button>
+
+                    <a
+                        href="{{ url_for('courses') }}"
+                        class="btn btn-secondary">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

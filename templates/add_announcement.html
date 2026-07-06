@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}
+New Announcement
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+
+            <h3>Create Announcement</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Title
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="title"
+                        class="form-control"
+                        required>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Announcement
+
+                    </label>
+
+                    <textarea
+                        name="content"
+                        rows="8"
+                        class="form-control"
+                        required></textarea>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Audience
+
+                    </label>
+
+                    <select
+                        name="audience"
+                        class="form-select">
+
+                        <option>All Users</option>
+                        <option>Students</option>
+                        <option>Lecturers</option>
+                        <option>Administrators</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-check mb-4">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="published"
+                        checked>
+
+                    <label class="form-check-label">
+
+                        Publish Immediately
+
+                    </label>
+
+                </div>
+
+                <button
+                    class="btn btn-success">
+
+                    Publish Announcement
+
+                </button>
+
+                <a
+                    href="/announcements"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

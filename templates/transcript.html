@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}
+Academic Transcript
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-dark text-white">
+
+            <h3 class="mb-0">
+
+                Academic Transcript
+
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row mb-4">
+
+                <div class="col-md-6">
+
+                    <p><strong>Registration Number:</strong> {{ student.reg_no }}</p>
+
+                    <p><strong>Student Name:</strong> {{ student.full_name }}</p>
+
+                    <p><strong>Programme:</strong> {{ student.programme.name if student.programme else "-" }}</p>
+
+                    <p><strong>Department:</strong> {{ student.department.name if student.department else "-" }}</p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <p><strong>Level:</strong> {{ student.level }}</p>
+
+                    <p><strong>Academic Year:</strong> {{ academic_year if academic_year else "-" }}</p>
+
+                    <p><strong>Status:</strong> {{ standing if standing else "Active" }}</p>
+
+                    <p><strong>Date Generated:</strong> {{ current_date }}</p>
+
+                </div>
+
+            </div>
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-primary">
+
+                    <tr>
+
+                        <th>Course Code</th>
+                        <th>Course Title</th>
+                        <th>Credit Units</th>
+                        <th>CA</th>
+                        <th>Exam</th>
+                        <th>Total</th>
+                        <th>Grade</th>
+                        <th>Grade Point</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% if results %}
+
+                    {% for result in results %}
+
+                    <tr>
+
+                        <td>{{ result.course.code }}</td>
+
+                        <td>{{ result.course.title }}</td>
+
+                        <td>{{ result.course.credit_hours }}</td>
+
+                        <td>{{ result.ca_score }}</td>
+
+                        <td>{{ result.exam_score }}</td>
+
+                        <td>{{ result.total }}</td>
+
+                        <td>{{ result.grade }}</td>
+
+                        <td>{{ result.grade_point }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="8" class="text-center">
+
+                            No transcript records found.
+
+                        </td>
+
+                    </tr>
+
+                {% endif %}
+
+                </tbody>
+
+            </table>
+
+            <div class="row mt-4">
+
+                <div class="col-md-3">
+
+                    <div class="alert alert-primary">
+
+                        <strong>Total Courses</strong><br>
+
+                        {{ results|length }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="alert alert-success">
+
+                        <strong>Total Credits</strong><br>
+
+                        {{ total_credits if total_credits else 0 }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="alert alert-warning">
+
+                        <strong>GPA</strong><br>
+
+                        {{ gpa if gpa else "0.00" }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="alert alert-info">
+
+                        <strong>CGPA</strong><br>
+
+                        {{ cgpa if cgpa else "0.00" }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="text-center mt-4">
+
+                <button class="btn btn-success" onclick="window.print()">
+
+                    Print Transcript
+
+                </button>
+
+                <a href="{{ url_for('students') }}"
+                   class="btn btn-secondary">
+
+                    Back
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

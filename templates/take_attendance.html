@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Take Attendance{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white">
+
+<h3>Take Attendance</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Course
+
+</label>
+
+<select
+name="course_id"
+class="form-select"
+required>
+
+{% for course in courses %}
+
+<option value="{{ course.id }}">
+
+{{ course.code }} - {{ course.title }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Attendance Date
+
+</label>
+
+<input
+type="date"
+name="date"
+class="form-control"
+required>
+
+</div>
+
+<hr>
+
+<h5>Students</h5>
+
+{% for student in students %}
+
+<div class="form-check mb-2">
+
+<input
+class="form-check-input"
+type="checkbox"
+name="present_students"
+value="{{ student.id }}">
+
+<label class="form-check-label">
+
+{{ student.reg_no }} - {{ student.full_name }}
+
+</label>
+
+</div>
+
+{% endfor %}
+
+<div class="mt-4">
+
+<button
+type="submit"
+class="btn btn-success">
+
+Save Attendance
+
+</button>
+
+<a
+href="{{ url_for('attendance') }}"
+class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

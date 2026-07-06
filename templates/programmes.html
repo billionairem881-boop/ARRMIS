@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}
+Programmes
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Programme Management</h2>
+
+    <div class="card mb-4">
+
+        <div class="card-header bg-primary text-white">
+            Add Programme
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="row">
+
+                    <div class="col-md-5">
+                        <label>Programme Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            required>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label>Programme Code</label>
+                        <input
+                            type="text"
+                            name="code"
+                            class="form-control"
+                            required>
+                    </div>
+
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button
+                            type="submit"
+                            class="btn btn-success w-100">
+                            Save
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-header bg-secondary text-white">
+            Available Programmes
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Programme Name</th>
+                        <th>Programme Code</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for programme in programmes %}
+
+                <tr>
+
+                    <td>{{ programme.id }}</td>
+                    <td>{{ programme.name }}</td>
+                    <td>{{ programme.code }}</td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="3" class="text-center">
+                        No programmes found.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

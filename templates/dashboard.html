@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        Dashboard
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-0 text-center">
+                <div class="card-body">
+                    <h5>Total Students</h5>
+                    <h2>0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-0 text-center">
+                <div class="card-body">
+                    <h5>Total Courses</h5>
+                    <h2>0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-0 text-center">
+                <div class="card-body">
+                    <h5>Registered Results</h5>
+                    <h2>0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-0 text-center">
+                <div class="card-body">
+                    <h5>Active Users</h5>
+                    <h2>1</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-4">
+
+        <div class="col-md-8">
+
+            <div class="card shadow">
+
+                <div class="card-header">
+
+                    System Overview
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="chart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-header">
+
+                    Quick Menu
+
+                </div>
+
+                <div class="list-group list-group-flush">
+
+                    <a href="/add_student" class="list-group-item">
+                        Register Student
+                    </a>
+
+                    <a href="/students" class="list-group-item">
+                        View Students
+                    </a>
+
+                    <a href="/courses" class="list-group-item">
+                        Courses
+                    </a>
+
+                    <a href="/results" class="list-group-item">
+                        Results
+                    </a>
+
+                    <a href="/" class="list-group-item">
+                        Home
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-4">
+
+        <div class="col-md-12">
+
+            <div class="card shadow">
+
+                <div class="card-header">
+
+                    Recent Activity
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Date</th>
+
+                                <th>Activity</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>-</td>
+
+                                <td>No activity available.</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const ctx = document.getElementById('chart');
+
+new Chart(ctx, {
+
+    type: 'bar',
+
+    data: {
+
+        labels: ['Students','Courses','Results'],
+
+        datasets: [{
+
+            label: 'System',
+
+            data: [0,0,0]
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true
+
+    }
+
+});
+
+</script>
+
+{% endblock %}

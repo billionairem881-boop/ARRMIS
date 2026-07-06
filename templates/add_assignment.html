@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Assignment
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white">
+
+<h3>Create Assignment</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label>Course</label>
+
+<select
+name="course_id"
+class="form-select">
+
+{% for course in courses %}
+
+<option value="{{ course.id }}">
+
+{{ course.code }} - {{ course.title }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Assignment Title</label>
+
+<input
+type="text"
+name="title"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Instructions</label>
+
+<textarea
+name="instructions"
+rows="6"
+class="form-control"
+required></textarea>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<label>Due Date</label>
+
+<input
+type="date"
+name="due_date"
+class="form-control"
+required>
+
+</div>
+
+<div class="col-md-6">
+
+<label>Maximum Marks</label>
+
+<input
+type="number"
+name="max_marks"
+class="form-control"
+value="100">
+
+</div>
+
+</div>
+
+<br>
+
+<button class="btn btn-success">
+
+Publish Assignment
+
+</button>
+
+<a href="/assignments"
+class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

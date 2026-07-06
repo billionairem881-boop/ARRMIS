@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}Register Student{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h3>Student Registration</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label>Registration Number</label>
+                        <input type="text" name="reg_no" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Full Name</label>
+                        <input type="text" name="full_name" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Gender</label>
+                        <select name="gender" class="form-control">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Programme</label>
+                        <input type="text" name="programme" class="form-control">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Department</label>
+                        <input type="text" name="department" class="form-control">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Year of Study</label>
+                        <input type="number" name="year" class="form-control">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Phone Number</label>
+                        <input type="text" name="phone" class="form-control">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Parent Phone</label>
+                        <input type="text" name="parent_phone" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Email Address</label>
+                        <input type="email" name="email" class="form-control">
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <h5>Continuous Assessment Marks</h5>
+
+                <div class="row">
+
+                    <div class="col-md-3 mb-3">
+                        <label>Programming Fundamentals</label>
+                        <input type="number" name="programming" class="form-control" min="0" max="100">
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label>Database Systems</label>
+                        <input type="number" name="database" class="form-control" min="0" max="100">
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label>Computer Networks</label>
+                        <input type="number" name="networking" class="form-control" min="0" max="100">
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label>Cyber Security</label>
+                        <input type="number" name="cyber_security" class="form-control" min="0" max="100">
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label>Web Development</label>
+                        <input type="number" name="web_development" class="form-control" min="0" max="100">
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label>Data Structures</label>
+                        <input type="number" name="data_structures" class="form-control" min="0" max="100">
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label>Operating Systems</label>
+                        <input type="number" name="operating_systems" class="form-control" min="0" max="100">
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label>Artificial Intelligence</label>
+                        <input type="number" name="artificial_intelligence" class="form-control" min="0" max="100">
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-success btn-lg">
+                        Save Student Record
+                    </button>
+
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary btn-lg">
+                        Cancel
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

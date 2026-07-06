@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Result
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3>Add Student Result</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Student
+                        </label>
+
+                        <select
+                            name="student_id"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+                                Select Student
+                            </option>
+
+                            {% for student in students %}
+
+                            <option value="{{ student.id }}">
+
+                                {{ student.reg_no }} - {{ student.full_name }}
+
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Course
+                        </label>
+
+                        <select
+                            name="course_id"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+                                Select Course
+                            </option>
+
+                            {% for course in courses %}
+
+                            <option value="{{ course.id }}">
+
+                                {{ course.code }} - {{ course.title }}
+
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Continuous Assessment (40%)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="ca_score"
+                            id="ca_score"
+                            class="form-control"
+                            min="0"
+                            max="40"
+                            required
+                            oninput="calculateResult()">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Final Examination (60%)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="exam_score"
+                            id="exam_score"
+                            class="form-control"
+                            min="0"
+                            max="60"
+                            required
+                            oninput="calculateResult()">
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+
+                            Total Score
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="total_score"
+                            class="form-control"
+                            readonly>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+
+                            Grade
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="grade"
+                            class="form-control"
+                            readonly>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+
+                            Remark
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="remark"
+                            class="form-control"
+                            readonly>
+
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-4">
+
+                    <button
+                        type="submit"
+                        class="btn btn-success">
+
+                        Save Result
+
+                    </button>
+
+                    <a
+                        href="{{ url_for('results') }}"
+                        class="btn btn-secondary">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function calculateResult(){
+
+    let ca = parseFloat(document.getElementById("ca_score").value) || 0;
+
+    let exam = parseFloat(document.getElementById("exam_score").value) || 0;
+
+    let total = ca + exam;
+
+    document.getElementById("total_score").value = total;
+
+    let grade = "";
+    let remark = "";
+
+    if(total >= 80){
+
+        grade = "A";
+        remark = "Excellent";
+
+    }else if(total >= 70){
+
+        grade = "B";
+        remark = "Very Good";
+
+    }else if(total >= 60){
+
+        grade = "C";
+        remark = "Good";
+
+    }else if(total >= 50){
+
+        grade = "D";
+        remark = "Pass";
+
+    }else{
+
+        grade = "F";
+        remark = "Fail";
+
+    }
+
+    document.getElementById("grade").value = grade;
+    document.getElementById("remark").value = remark;
+
+}
+
+</script>
+
+{% endblock %}

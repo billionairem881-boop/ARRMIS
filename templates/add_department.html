@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Department
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white">
+
+<h3>Add Department</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label>Department Code</label>
+
+<input type="text"
+       name="code"
+       class="form-control"
+       required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Department Name</label>
+
+<input type="text"
+       name="name"
+       class="form-control"
+       required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Head of Department</label>
+
+<input type="text"
+       name="hod"
+       class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Description</label>
+
+<textarea name="description"
+          rows="5"
+          class="form-control"></textarea>
+
+</div>
+
+<button class="btn btn-success">
+
+Save Department
+
+</button>
+
+<a href="/departments"
+   class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

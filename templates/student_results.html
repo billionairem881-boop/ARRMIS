@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% block title %}
+Student Results
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+
+            <h3>Student Result Sheet</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row mb-4">
+
+                <div class="col-md-6">
+
+                    <strong>Name:</strong>
+                    {{ student.full_name }}
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <strong>Registration No:</strong>
+                    {{ student.reg_no }}
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <strong>Programme:</strong>
+                    {{ student.programme.name if student.programme else "-" }}
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <strong>Level:</strong>
+                    {{ student.level }}
+
+                </div>
+
+            </div>
+
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Course Code</th>
+                        <th>Course Title</th>
+                        <th>Credit Units</th>
+                        <th>CA</th>
+                        <th>Exam</th>
+                        <th>Total</th>
+                        <th>Grade</th>
+                        <th>Remark</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% if results %}
+
+                    {% for result in results %}
+
+                    <tr>
+
+                        <td>{{ result.course.code }}</td>
+
+                        <td>{{ result.course.title }}</td>
+
+                        <td>{{ result.course.credit_hours }}</td>
+
+                        <td>{{ result.ca_score }}</td>
+
+                        <td>{{ result.exam_score }}</td>
+
+                        <td>{{ result.total }}</td>
+
+                        <td>
+
+                            <span class="badge bg-primary">
+
+                                {{ result.grade }}
+
+                            </span>
+
+                        </td>
+
+                        <td>{{ result.remark }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="8" class="text-center">
+
+                            No results available.
+
+                        </td>
+
+                    </tr>
+
+                {% endif %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow mt-4">
+
+        <div class="card-header bg-primary text-white">
+
+            Academic Summary
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-3">
+
+                    <div class="alert alert-info">
+
+                        <strong>Courses</strong>
+
+                        <br>
+
+                        {{ results|length }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="alert alert-success">
+
+                        <strong>GPA</strong>
+
+                        <br>
+
+                        {{ gpa if gpa is defined else "0.00" }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="alert alert-warning">
+
+                        <strong>CGPA</strong>
+
+                        <br>
+
+                        {{ cgpa if cgpa is defined else "0.00" }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="alert alert-secondary">
+
+                        <strong>Status</strong>
+
+                        <br>
+
+                        {{ standing if standing is defined else "Pending" }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="text-center mt-4">
+
+        <a href="{{ url_for('transcript', id=student.id) }}"
+           class="btn btn-primary">
+
+            Academic Transcript
+
+        </a>
+
+        <button class="btn btn-success" onclick="window.print()">
+
+            Print Result
+
+        </button>
+
+        <a href="{{ url_for('students') }}"
+           class="btn btn-secondary">
+
+            Back
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

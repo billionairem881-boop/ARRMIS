@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Quiz
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white">
+
+<h3>Create Online Quiz</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label>Course</label>
+
+<select name="course_id" class="form-select">
+
+{% for course in courses %}
+
+<option value="{{ course.id }}">
+
+{{ course.code }} - {{ course.title }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Quiz Title</label>
+
+<input
+type="text"
+name="title"
+class="form-control"
+required>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<label>Duration (Minutes)</label>
+
+<input
+type="number"
+name="duration"
+class="form-control"
+required>
+
+</div>
+
+<div class="col-md-6">
+
+<label>Total Marks</label>
+
+<input
+type="number"
+name="total_marks"
+class="form-control"
+value="100">
+
+</div>
+
+</div>
+
+<br>
+
+<div class="mb-3">
+
+<label>Instructions</label>
+
+<textarea
+name="instructions"
+rows="6"
+class="form-control"></textarea>
+
+</div>
+
+<button class="btn btn-success">
+
+Save Quiz
+
+</button>
+
+<a href="/quizzes"
+class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
