@@ -386,6 +386,25 @@ Logout
 
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const toggleBtn = document.querySelector('button .fa-bars, button span.navbar-toggler-icon, .btn .fa-bars')?.closest('button') || document.querySelector('button');
+        const sidebar = document.querySelector('.col-md-3, .col-lg-3, #sidebar, [class*="sidebar"]');
+        
+        if (toggleBtn && sidebar) {
+            toggleBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                if (sidebar.style.display === "none") {
+                    sidebar.style.display = "block";
+                } else {
+                    sidebar.style.display = "none";
+                }
+            });
+        }
+    });
+    </script>
+    
 </body>
 
 </html>
