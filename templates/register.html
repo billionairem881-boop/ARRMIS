@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARRMIS - Self Registration</title>
+    <link rel="stylesheet" href="https://jsdelivr.net">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="card shadow-sm p-4" style="width: 100%; max-width: 450px;">
+        <div class="text-center mb-4 text-white p-3 rounded" style="background-color: #0d6efd;">
+            <h3>ARRMIS Registration</h3>
+            <p class="mb-0 small">Create your account to continue</p>
+        </div>
+        <form method="POST" action="/register">
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" placeholder="Enter Username" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mb-3">Register</button>
+            <div class="text-center">
+                <a href="/" class="text-decoration-none small">Already have an account? Login</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

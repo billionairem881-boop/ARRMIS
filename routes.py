@@ -1862,3 +1862,29 @@ def settings():
         "settings.html",
         settings=settings
     )
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        
+        # Check if username or email already exists
+        if User.query.filter_by(username=username).first():
+            flash('Username already exists!', 'danger')
+            return redirect(url_for('register'))
+            
+        # Create a new user with standard role (adjust password hash mapping if needed)
+        new_user = User(username=username, email=email, password_hash=generate_password_hash(password))
+        
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+            flash('Registration successful! Please login.', 'success')
+            return redirect(url_for('login'))
+        except Exception as e:
+            db.session.rollback()
+            flash('An error occurred during registration.', 'danger')
+            return redirect(url_for('register'))
+            
+    return render_template('register.html')
