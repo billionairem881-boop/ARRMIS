@@ -5,133 +5,35 @@ Login
 {% endblock %}
 
 {% block content %}
-
-<div class="container">
-
-    <div class="row justify-content-center mt-5">
-
+<div class="container mt-5">
+    <div class="row justify-content-center">
         <div class="col-lg-5">
-
-            <div class="card shadow-lg border-0">
-
-                <div class="card-header bg-primary text-white text-center">
-
-                    <h2 class="mb-0">
-                        ARRMIS Login
-                    </h2>
-
-                    <small>
-                        Academic Records & Results Management Information System
-                    </small>
-
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h2 class="mb-0 fw-bold">ARRMIS Login</h2>
+                    <small class="text-white-50">Academic Records & Results Management</small>
                 </div>
-
                 <div class="card-body p-4">
-
-                    <div class="text-center mb-4">
-
-                        <i class="bi bi-person-circle display-1 text-primary"></i>
-
-                        <h4 class="mt-2">
-                            Welcome Back
-                        </h4>
-
-                        <p class="text-muted">
-                            Sign in to continue
-                        </p>
-
-                    </div>
-
-                    <form method="POST">
-
-                        {{ form.hidden_tag() }}
-
+                    <form method="POST" action="">
                         <div class="mb-3">
-
-                            {{ form.username.label(class="form-label") }}
-
-                            {{ form.username(
-                                class="form-control",
-                                placeholder="Enter Username"
-                            ) }}
-
+                            <label class="form-label fw-semibold">Username</label>
+                            <input type="text" name="username" class="form-control form-control-lg" required placeholder="Enter Username">
                         </div>
-
                         <div class="mb-3">
-
-                            {{ form.password.label(class="form-label") }}
-
-                            <div class="input-group">
-
-                                {{ form.password(
-                                    class="form-control",
-                                    placeholder="Enter Password",
-                                    id="password"
-                                ) }}
-
-                                <button
-                                    class="btn btn-outline-secondary"
-                                    type="button"
-                                    onclick="togglePassword()">
-
-                                    <i class="bi bi-eye"></i>
-
-                                </button>
-
-                            </div>
-
+                            <label class="form-label fw-semibold">Password</label>
+                            <input type="password" name="password" class="form-control form-control-lg" required placeholder="Enter Password">
                         </div>
-
-                        <div class="form-check mb-3">
-
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="remember">
-
-                            <label
-                                class="form-check-label"
-                                for="remember">
-
-                                Remember Me
-
-                            </label>
-
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mb-3 shadow-sm">Login</button>
+                        <div class="text-center">
+                            <a href="#" class="text-decoration-none small text-secondary">Forgot Password?</a>
                         </div>
-
-                        <div class="d-grid">
-
-                            {{ form.submit(
-                                class="btn btn-primary btn-lg"
-                            ) }}
-
-                        </div>
-
                     </form>
-
-                    <hr>
-
-                    <div class="text-center">
-
-                        <a href="#" class="text-decoration-none">
-
-                            Forgot Password?
-
-                        </a>>
-                         </div>
-
-                    <div class="text-center mt-2">
-    <p class="small text-muted">Don't have an account? <a href="/register" class="text-decoration-none fw-bold">Sign Up</a></p>
-</div>
-
-<div class="card-footer text-center text-muted">
-        <small>
-            Secure Authentication Portal
-        </small>
+                </div>
+                <div class="card-footer bg-light text-center py-3 border-top">
+                    <p class="small text-muted mb-0">Don't have an account? <a href="/register" class="text-decoration-none fw-bold text-primary">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-<div class="text-center mt-2">
-    <p class="small text-muted">Don't have an account? <a href="/register" class="text-decoration-none fw-bold">Sign Up</a></p>
 </div>
 {% endblock %}
