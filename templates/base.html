@@ -36,6 +36,52 @@
         rel="stylesheet"
         href="{{ url_for('static', filename='css/style.css') }}">
 
+<style>
+/* ARRMIS Professional Color Palette Theme overrides */
+body {
+    background-color: #f8fafc !important; /* Soft light gray background */
+    color: #1e293b !important; /* Charcoal dark gray text instead of raw black */
+}
+
+/* Sidebar Styling: Elegant Slate/Navy Blue */
+.sidebar, [class*="sidebar"] {
+    background-color: #0f172a !important; /* Dark Slate Blue navy tint */
+    border-right: 1px solid #e2e8f0 !important;
+}
+
+.sidebar a, [class*="sidebar"] a {
+    color: #94a3b8 !important; /* Soft gray links */
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar a:hover, [class*="sidebar"] a:hover {
+    color: #38bdf8 !important; /* Premium Sky Blue highlight on hover */
+    background-color: #1e293b !important;
+    border-radius: 6px;
+}
+
+/* Primary buttons and headers */
+.bg-primary, .btn-primary {
+    background-color: #4f46e5 !important; /* Deep Indigo instead of raw primary blue */
+    border-color: #4f46e5 !important;
+}
+
+/* Dashboard Summary Card Badges */
+.card {
+    border: none !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05) !important;
+    border-radius: 12px !important;
+    background-color: #ffffff !important;
+}
+
+/* Three lines navigation toggle box styling */
+.navbar-toggler, button[class*="toggler"] {
+    border: 1px solid #cbd5e1 !important;
+    background-color: #f1f5f9 !important;
+    color: #475569 !important;
+    border-radius: 8px !important;
+}
+</style>
 </head>
 
 <body>
